@@ -14,7 +14,33 @@ import java.time.Duration;
 import java.util.Random;
 
 public class NiceKlass {
-
+    @Test //Тест успешно пройдён, производится РАСПРЕДЕЛЕНИЕ по группам
+    //***Требование покрыто
+    public void Nams(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://kobor.teslaserver.ru/");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]/h2")));
+        new Actions(driver)
+                .keyDown(Keys.ESCAPE)
+                .sendKeys("a")
+                .perform();
+        driver.manage().window().fullscreen();
+        driver.findElement(By.xpath("//*[@id=\"scrollWrapper\"]/div[1]/div[2]/div/div[2]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"SearchPopupInputLabel-sc-xwhyud-0 edaCfE\"]")));
+        new Actions(driver)
+                .keyDown(Keys.ENTER)
+                .sendKeys("Холодильник бирюса")
+                .perform();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div[2]/div[3]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div/div/div[2]/div[3]/div[2]/h5")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Холодильник Бирюса\")]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[contains(text(), \"Поиск по категориям\")]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Холодильник\")]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Бирюса\")]")));
+        System.out.println("Распределение по группам complitied");
+        driver.quit();
+    }
     @Test //Тест успешно пройдён, производится поиск по НАЗВАНИЮ товара
     public void Name(){
         WebDriver driver = new ChromeDriver();
