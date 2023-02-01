@@ -11,30 +11,29 @@ public class NiceKlass extends WebDriverSet{
     //***Требование покрыто
     public void Nams(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
                 .perform();
-        driver.manage().window().fullscreen();
         driver.findElement(By.xpath("//*[@id=\"scrollWrapper\"]/div[1]/div[2]/div/div[2]")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"SearchPopupInputLabel-sc-xwhyud-0 edaCfE\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='SearchPopupHead-sc-1cmgsok-0 cEoWiF']")));
         new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .sendKeys("Холодильник бирюса")
                 .perform();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div[2]/div[3]")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div/div/div[2]/div[3]/div[2]/h5")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'По товарам (')]")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Холодильник Бирюса\")]")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[contains(text(), \"Поиск по категориям\")]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(), 'категориям ')]"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Холодильник\")]")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Бирюса\")]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(), 'брендам')]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), \"Бирюса\")] | //span[contains(text(), \"Холодильник\")]")));
         System.out.println("Распределение по группам complitied");
     }
     @Test //Тест успешно пройдён, производится поиск по НАЗВАНИЮ товара
     public void Name(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
@@ -59,7 +58,7 @@ public class NiceKlass extends WebDriverSet{
     //Требование покрыто, при вводе Cnek вместо Стул, производится автозамена, поиск выполняется верно.
     public void transit(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
@@ -85,7 +84,7 @@ public class NiceKlass extends WebDriverSet{
     //***Требование покрыто этим тестом, вывод одного уникального значения, товар не повторяется.
     public void articul(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
@@ -108,7 +107,7 @@ public class NiceKlass extends WebDriverSet{
     @Test //Тест успешно пройдён, в описании присутствует введённое нами значение.
     public void info(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
@@ -137,7 +136,7 @@ public class NiceKlass extends WebDriverSet{
     //***Требование покрыто, орфографические ошибки исправляеются на верное значение
     public void ErrorName(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
@@ -163,7 +162,7 @@ public class NiceKlass extends WebDriverSet{
     //***Требование покрыто, не все слова исправляются имея не более 3-х ошибок. К примеру слово "Сстулл"-исправляется, а "Стуллл"-нет.
     public void ErrorName2(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
@@ -188,7 +187,7 @@ public class NiceKlass extends WebDriverSet{
     //***Требование покрыто, происходит автоматическое распознавание транслитерации и приведение поискового запроса к нативному языку.
     public void TranslationName(){
         driver.get("https://kobor.teslaserver.ru/");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[12]/div/div/div[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2[contains(text(), 'Ваш город')])[last()]")));
         new Actions(driver)
                 .keyDown(Keys.ESCAPE)
                 .sendKeys("a")
